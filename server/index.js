@@ -21,9 +21,9 @@ if(conn){
 };
 connectDB();
 
-app.post("/health",(req,res)=>{
+app.get("/health",(req,res)=>{
     res.json({
-        message:"Welcome to FTB Link"
+        message:"All good"
 })
 });
 
