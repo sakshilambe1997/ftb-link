@@ -23,12 +23,10 @@ const postLink =async(req,res)=>{
 const getSlugRedirect =async(req,res)=>{
     
     const {slug}=req.params;
-
     const link = await Link.findOne({slug});
-
     if(!link){
-        return res.json({
-            sucess:false,
+        return res.status(404).json({
+            success:false,
             message:"Link not found",
         })
     }
@@ -40,5 +38,14 @@ const getSlugRedirect =async(req,res)=>{
 
 };
 
+const getLinks= async(req,res)=>{
+    const allLinks =await Link.find()
+    res.json({
+        success:true,
+        message:"All links fetched successfully",
+        data:allLinks
+    })
+}
 
-export {postLink,getSlugRedirect};
+
+export {postLink,getSlugRedirect,getLinks};
